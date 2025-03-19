@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Projects</title>
+<style>
+    /* General Styles */
+    body {
+        margin: 0;
+        font-family: 'Helvetica', sans-serif;
+        color: #a7a7a7; /* Apply the new color */
+    }
+
+    /* Header Styling */
+    header {
+        background-color: #ffffff;
+        padding: 20px;
+    }
+
+    /* Branding Center Layout */
+    .brandingCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .site-title {
+        font-size: 2rem;
+        text-decoration: none;
+        color: #a7a7a7;
+    }
+
+    .navigation ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navigation a {
+        text-decoration: none;
+        color: #a7a7a7;
+        font-size: 18px;
+        transition: color 0.3s ease;
+    }
+
+    .navigation a:hover {
+        color: #a7a7a7;
+    }
+
+    .navigation a.active {
+        text-decoration: underline;
+        color: #a7a7a7;
+        text-underline-offset: 6px;
+        text-decoration-thickness: 2px;
+    }   
+    
+            /* Social Media Icons */
+        .social-media {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 28%;
+            border: 2px solid #00000000;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+    /* SoundCloud Section Styling */
+    .soundcloud-container {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 150px;
+        margin-top: 50px;
+        margin-right: 250px;
+        margin-left: 250px;
+    }
+
+    .soundcloud-section {
+        flex: 1;
+        font-size: 1.2rem;
+    }
+
+    .soundcloud-embed iframe {
+        width: 100%;
+        height: 350px;
+        border: none;
+    }
+
+        /* Centered Video Sections 4, 5, and 6 */
+.centered-video-container .video-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centered-video-container .video-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%; /* Ensures the video and description take full width within container */
+    align-items: left;
+}
+
+.centered-video-container .video-description {
+    margin-top: 10px; /* Add space between the video and description */
+    text-align: left;
+}
+
+.text-section {
+    display: flex;
+    justify-content: center; /* Centers text horizontally */
+    text-align: justify;      /* Centers text within its box */
+    min-height: 30vh;       /* Adjusts container height to the viewport, can be modified */
+    padding: 20px;           /* Adds padding for better readability */
+    font-size: 1.2rem;       /* Adjust font size as needed */
+    color: #a7a7a7;             /* Text color */
+    text-decoration-thickness: 2px;
+}
+
+.text-header-section {
+    justify-content: center; /* Centers text horizontally */
+    text-align: center; 
+    color: #a7a7a7;
+    font-size: 40px;
+}
+
+/* Make the Vimeo video match the same size as other videos */
+.vimeo-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1080px; /* Same as other videos */
+    height: 720px; /* Same height for consistency */
+    margin-bottom: 0; /* Ensure no extra margin */
+}
+
+.vimeo-wrapper iframe {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+}
+
+/* Make sure the video section aligns with the others */
+.video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    width: 0%; /* Ensures the video and description take full width within container */
+    align-items: left;
+}
+
+.video-description {
+    margin-top: 0px; /* Remove any extra space */
+    padding-top: 0px; /* Slight padding for readability */
+    text-align: left;
+    font-size: 1.1rem;
+    color: #a7a7a7;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="brandingCenter">
+            <a href="/" class="site-title">S</a>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="musicprojects.html" class="active">Music Projects</a></li>
+                    <li><a href="terraflekt.html">Terraflekt</a></li>
+                </ul>
+            </nav>
+            <div class="social-media">
+                <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+                    <img src="images/instagram.png" alt="Instagram">
+                </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="text-header-section">
+            <h1>S</h1> 
+            <div class="text-section">
+            <p>Smoeky is a UK singer, songwriter, rapper and producer originating from the SouthEast of London, <br>
+                his versatile approach to his sound is what makes him unique, incorporating cinematic sounds with <br>
+                a blend of UK drill and spoken word to create a nostalgic storytelling feeling within his music, <br>
+                exploring his home life, love, relationships and mental health. with lofi, hip hop, and experimental  <br>
+                stem from artists such as Björk, Dave, Labrinth and the late XXXTentacion.</p>
+            </section> 
+        <!-- Combined SoundCloud Sections -->
+        <div class="soundcloud-container">
+            <!-- SoundCloud Section 1 -->
+            <section class="soundcloud-section">
+                <p>FRACTURED EDEN .•<br>
+                    "Fractured Eden" is a captivating musical journey that delves deep into the depths of heartache, repressed emotions, and inner conflicts. It unveils a profound exploration of self-realization and the tumultuous experiences of having one's heart played with to the point of explosion. Through lyrics and evocative melodies, this EP weaves a poignant narrative, drawing inspiration from the timeless themes of love, separation, and the consequences of external influences.</p>
+            </section>
+
+            <!-- SoundCloud Section 2 -->
+            <section class="soundcloud-section soundcloud-embed">
+                <iframe src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/shemi-cudjoe&amp;color=%23a7a7a7&show_artwork=true&start_track=4"></iframe>
+            </section>
+        </div>
+
+<div class="centered-video-container">
+<!-- Vimeo Video Section -->
+<div class="video-section">
+    <div class="video-container">
+        <div class="vimeo-wrapper">
+            <iframe src="https://player.vimeo.com/video/1067174068?h=b20fbdf091" 
+            frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="video-section">
+    <div class="video-container">
+        <div class="vimeo-wrapper">
+            <iframe src="https://player.vimeo.com/video/1067242472?h=c0e5fe27db" 
+            frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+            <section class="text-header-section">
+                <h1>Maroon</h1>       
+                
+        <!-- Centered Video Sections 4, 5, and 6 -->
+        <div class="video-section">
+            <div class="video-container">
+                <div class="vimeo-wrapper">
+                    <iframe src="https://player.vimeo.com/video/1067306698?badge=0" 
+                    frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+            <div class="video-description">
+                <p>Performed as part of The Circus Of Brutality<br> 
+                    Presented by SOLACE - @s0l_05<br> 
+                    Edited by Shemi Cudjoe<br> 
+                    Filmed by @io.vainnitis</p>
+
+                    <div><h3>Description</h3></div>
+                    <p>Maroon is a movement piece about the struggle with the shadow self, the parts of us we suppress or fear. Referencing the Maroons, 
+                        who fought for their freedom, the name Maroon reflects that feeling of abandonment, like how we push certain parts of ourselves 
+                        away. Using abstract vocals and distorted sounds, with voices of negative affirmation, I wanted to capture the feeling of running 
+                        from yourself, only to realize the thing you fear is just a reflection of who you are. It’s about judgment, repression, and how
+                        avoiding our own darkness can break us. Maroon is my way of expressing that internal conflict and the moment when you realize you 
+                        can’t escape what’s inside.</p>
+
+
+                    <div><h3>Listen to Maroon</h3></div>
+                    <div class="audio-player"></div>
+                    <audio controls style="width: 100%;">
+                            <source src="media/music projects/Cimarrón.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                </div>
+            </div>
+        </div>
+        <h1></h1>  
+        <h1></h1>
+        <h1></h1>
+
+    </section>   
+        <section class="text-header-section">
+            
+            <h1>Composition for Media</h1>
+        </section> 
+
+
+    <div class="video-section">
+        <div class="video-container">
+            <video controls>
+                <source src="media/music projects/5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-description">
+                <p>Music for Games - Cyberpunk 2077</p>
+                <p>During the production of the track for the "Cyberpunk 2077 game trailer", my aim was to create an aggressive and 
+                    immersive experience that captured the grungy and dystopian essence of Night City. I achieved this by
+                     utilizing heavily processed synthesizers and driving drums to generate a distinct futuristic sound. The music 
+                     was carefully synchronized with the visuals to intensify the portrayed atmosphere. I also focused on infusing 
+                     the music with thematic elements to convey the game's narrative and emotions. As the trailer progressed, the 
+                     dynamics of the track gradually built up, culminating in an exhilarating finale that created a sense of 
+                     anticipation and excitement. My goal was to seamlessly integrate the composition and production with the trailer, 
+                     enhancing its atmosphere while staying true to the game's concept.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <div class="video-container">
+            <video controls>
+                <source src="media/music projects/6.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-description">
+                <p>Music for Film - Alice (1988)</p>
+                <p>While working on the track for the film Alice, my primary focus was to 
+                    craft an eerie and dark sonic landscape that reflected the film's unsettling tone. 
+                    I carefully shaped the composition and production to synchronize with the on-screen 
+                    actions, ensuring that every sound and effect intensified the tension and emotions. 
+                    Through deliberate use of textures, atmospheric layers, and dynamic pacing, I aimed 
+                    to immerse the audience deeper into the film's world, amplifying the mood and enhancing 
+                    the storytelling experience.</p>
+            </div>
+        </div>
+    </div>
+</div> 

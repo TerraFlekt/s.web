@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Helvetica', sans-serif;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #fff;
+            color: #000;
+            padding: 8px;
+            text-decoration: none;
+            border: 1px solid #000;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Branding Center Layout */
+        .brandingCenter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            text-decoration: none;
+            color: #a7a7a7;
+        }
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 30px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .navigation a {
+    text-decoration: none; /* Remove underline for all links */
+    color: #a7a7a7;
+    transition: color 0.3s ease;
+    font-size: 18px; /* Adjust text size */
+}
+
+.navigation a:hover {
+    color: #a7a7a7; /* Change color on hover */
+}
+
+.navigation a.active {
+    text-decoration: underline; /* Only underline the active page */
+    color: #a7a7a7; /* Optional: Different color for the active page */
+    text-underline-offset: 6px; /* Adjust the gap between text and underline */
+    text-decoration-thickness: 2px; /* Adjust underline thickness */
+}
+
+        /* Social Media Icons */
+        .social-media {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 28%;
+            border: 2px solid #00000000;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Menu Overlay (Optional if applicable) */
+        .menu-overlay {
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: opacity 0.3s ease;
+        }
+
+        /* Main Content Styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .fade-link {
+            display: block;
+            margin: 20px 0;
+            font-size: 4rem;
+            color: #555;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 1s ease, transform 0.3s ease;
+        }
+
+        .fade-link:hover {
+            color: #a0a0a0;
+            transform: scale(1.1);
+        }
+
+        .fade-link.fade-in {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#main-content" class="skip-link">Skip to content</a>
+        <div class="brandingCenter">
+            <a href="/" class="site-title">S</a>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="musicprojects.html">Music Projects</a></li>
+                    <li><a href="terraflekt.html">Terraflekt</a></li>                  
+                </ul>
+            </nav>
+            <div class="social-media">
+                <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+                    <img src="images/instagram.png" alt="Instagram">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container">
+            <a href="2ddesigns.html" class="fade-link fade-in">2D Design</a>
+            <a href="3ddesigns.html" class="fade-link fade-in">3D Design</a>            
+            <a href="commissions.html" class="fade-link fade-in">Commissions</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade in effect for navigation links
+            const navigation = document.querySelector('.navigation ul');
+            navigation.style.opacity = 1;
+
+            // Fade-in for main content links
+            const links = document.querySelectorAll('.fade-link');
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.classList.add('fade-in');
+                }, index * 200); // Delay fade-in for each item
+            });
+        });
+    </script>
+</body>
+</html>
