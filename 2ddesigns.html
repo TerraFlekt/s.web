@@ -8,6 +8,7 @@
         body {
             margin: 0;
             font-family: 'Helvetica', sans-serif;
+            overflow-x: hidden;
         }
 
         /* Header Styling */
@@ -44,8 +45,8 @@
             font-size: 18px;
         }
 
-                /* Social Media Icons */
-                .social-media {
+        /* Social Media Icons */
+        .social-media {
             display: flex;
             gap: 10px;
         }
@@ -73,7 +74,7 @@
 
         /* Text Section */
         .text-section {
-            margin: 60px;
+            margin: 130px auto;
             text-align: center;
             color: #a7a7a7;
             text-decoration-thickness: 2px;
@@ -83,6 +84,7 @@
         /* Slidable Portfolio Grid */
         .portfolio-container {
             display: flex;
+            justify-content: center;
             overflow: hidden;
             white-space: nowrap;
             background-color: #f9f9f9;
@@ -91,7 +93,13 @@
 
         .slider-wrapper {
             display: flex;
+            min-width: 200%;
             animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .slider-wrapper img {
@@ -104,18 +112,6 @@
 
         .slider-wrapper img:hover {
             transform: scale(1.05);
-        }
-
-        /* Infinite scroll animation with a fixed speed */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50%)); } /* Adjust distance for a smoother loop */
-        }
-
-        /* Set the speed in pixels per second */
-        .slider-wrapper {
-            display: flex;
-            animation: scroll calc(40s) linear infinite; /* Adjust the duration for consistent speed */
         }
 
         /* Lightbox Styling */
@@ -165,10 +161,9 @@
         .centered-video-container .video-container {
             display: flex;
             flex-direction: column;
-            width: 50%; /* Ensures the video and description take full width within container */
-            align-items: left;
-            margin-top: 7%;
-            margin-bottom: 10%;
+            width: 50%;
+            align-items: center;
+            margin: 7% auto 10%;
         }
 
         .video-section {
