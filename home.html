@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Header</title>
     <style>
-        /* General Styles */
         body {
             margin: 0;
             font-family: 'Helvetica', sans-serif;
         }
 
-        /* Skip Link */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -21,26 +20,26 @@
             text-decoration: none;
             border: 1px solid #000;
             transition: top 0.3s;
+            z-index: 1000;
         }
         .skip-link:focus {
             top: 0;
         }
 
-        /* Header Styling */
         header {
             background-color: #ffffff;
             padding: 20px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Branding Center Layout */
         .brandingCenter {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
-            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .site-title {
@@ -54,7 +53,8 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
             opacity: 0;
             transition: opacity 1s ease;
         }
@@ -72,19 +72,16 @@
 
         .navigation a.active {
             text-decoration: underline;
-            color: #a7a7a7;
             text-underline-offset: 6px;
             text-decoration-thickness: 2px;
         }
 
-        /* Social Media Icons */
         .social-media {
             display: flex;
             gap: 10px;
         }
 
         .social-icon {
-            display: inline-block;
             width: 20px;
             height: 20px;
             border-radius: 28%;
@@ -97,14 +94,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
         .social-icon:hover {
             transform: scale(1.2);
         }
 
-        /* Hero Section */
         .hero {
             display: flex;
             align-items: center;
@@ -112,7 +107,8 @@
             text-align: center;
             background: url('images/hero-image.jpg') no-repeat center center/cover;
             color: #ffffff;
-            padding: 100px 20px;
+            padding: 80px 20px;
+            min-height: 50vh;
         }
 
         .hero h1 {
@@ -126,10 +122,9 @@
             margin: 20px auto 0;
         }
 
-        /* About Section */
         .about {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background-color: #f4f4f4;
         }
 
@@ -144,12 +139,11 @@
             margin: 0 auto;
         }
 
-        /* Call to Action Section */
         .cta {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background-color: #e1e1e1;
         }
 
@@ -162,6 +156,7 @@
             max-width: 600px;
             text-align: center;
             margin-bottom: 20px;
+            font-size: 1.1rem;
         }
 
         .cta button {
@@ -178,7 +173,6 @@
             background-color: #555;
         }
 
-        /* Footer */
         footer {
             background-color: #333;
             color: #fff;
@@ -196,13 +190,100 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .brandingCenter {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navigation ul {
+                justify-content: center;
+                margin: 15px 0;
+            }
+
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about, .cta {
+                padding: 30px 15px;
+            }
+
+            .about h2, .cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .site-title {
+                font-size: 1.5rem;
+            }
+
+            .navigation a {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero {
+                padding: 40px 10px;
+                min-height: 40vh;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                max-width: 90%;
+            }
+
+            .about h2, .cta h2 {
+                font-size: 1.2rem;
+            }
+
+            .about p, .cta p {
+                font-size: 0.95rem;
+            }
+
+            .cta button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .navigation a {
+                font-size: 14px;
+            }
+
+            .social-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+
+            footer a {
+                margin: 0 5px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <a href="#main-content" class="skip-link">Skip to content</a>
         <div class="brandingCenter">
-            <a href="/" class="site-title">S</a>
+            <a href="home.html" class="site-title">S</a>
             <nav class="navigation">
                 <ul>
                     <li><a href="home.html" class="active">Home</a></li>
@@ -219,7 +300,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div>
             <h1>Welcome to My Creative World</h1>
@@ -228,13 +308,11 @@
     </section>
 
     <main id="main-content">
-        <!-- About Section -->
         <section class="about">
             <h2>About the Artist</h2>
             <p>I am a multidisciplinary artist passionate about exploring different forms of expression. From visual art to interactive installations, each piece tells a unique story and invites you to experience art in all its dimensions.</p>
         </section>
 
-        <!-- Call to Action Section -->
         <section class="cta">
             <h2>Let's Connect</h2>
             <p>Whether you're interested in a collaboration, commission, or just learning more about my work, feel free to reach out.</p>
@@ -242,9 +320,8 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Multidisciplinary Artist. All rights reserved.</p>
+        <p>© 2024 Multidisciplinary Artist. All rights reserved.</p>
         <div>
             <a href="portfolio.html">Portfolio</a> | 
             <a href="shop.html">Shop</a> | 
@@ -252,7 +329,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navigation = document.querySelector('.navigation ul');
