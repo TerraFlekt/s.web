@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Header</title>
     <style>
-        /* General Styles */
         body {
             margin: 0;
             font-family: 'Helvetica', sans-serif;
         }
 
-        /* Skip Link */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -21,26 +20,26 @@
             text-decoration: none;
             border: 1px solid #000;
             transition: top 0.3s;
+            z-index: 1000;
         }
         .skip-link:focus {
             top: 0;
         }
 
-        /* Header Styling */
         header {
             background-color: #ffffff;
             padding: 20px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Branding Center Layout */
         .brandingCenter {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
-            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .site-title {
@@ -54,7 +53,8 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
             opacity: 1;
             transition: opacity 1s ease;
         }
@@ -72,19 +72,16 @@
 
         .navigation a.active {
             text-decoration: underline;
-            color: #a7a7a7;
             text-underline-offset: 6px;
             text-decoration-thickness: 2px;
         }
 
-        /* Social Media Icons */
         .social-media {
             display: flex;
             gap: 10px;
         }
 
         .social-icon {
-            display: inline-block;
             width: 20px;
             height: 20px;
             border-radius: 28%;
@@ -97,43 +94,41 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
         .social-icon:hover {
             transform: scale(1.2);
         }
 
-        /* Text Section */
         .text-section {
-            margin: 60px;
+            margin: 40px 20px;
             text-align: center;
             color: #a7a7a7;
-            text-decoration-thickness: 2px;
             font-size: 15px;
         }
 
-        /* Gallery Styles */
         .gallery {
             display: flex;
-            gap: 50px;
+            gap: 30px;
             justify-content: center;
             flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .gallery-section {
+            margin-bottom: 60px;
         }
 
         .gallery img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
             object-fit: cover;
             border-radius: 2px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        /* Gallery Section Spacing */
-        .gallery-section {
-            margin-bottom: 100px;
-        }
-
-        /* Image description styling */
         .image-description {
             text-align: left;
             margin-top: 10px;
@@ -141,7 +136,6 @@
             color: #a7a7a7;
         }
 
-        /* Lightbox Styles */
         .lightbox {
             display: none;
             position: fixed;
@@ -164,32 +158,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             max-width: 90%;
             max-height: 90%;
-            text-align: left;
         }
 
         .lightbox img {
-            max-width: 50%;
-            max-height: 50%;
+            width: 100%;
+            max-width: 800px;
+            height: auto;
             border-radius: 5px;
         }
 
         .lightbox-description {
-            position: absolute;
-            top: 400px;
-            right: 50px;
             color: #fff;
-            font-size: 1rem;            
-            padding: 5px 10px;
+            font-size: 1rem;
+            padding: 10px;
             border-radius: 5px;
-            max-width: 40%;
+            max-width: 90%;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .close-lightbox {
             position: absolute;
-            top: 20px;
+            top: 10px;
             right: 20px;
             font-size: 30px;
             color: #fff;
@@ -198,26 +190,99 @@
 
         .video-container {
             display: flex;
-            flex-direction: column; /* Stack videos vertically */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 50px; /* Space between videos */
-            margin: 50px auto;
+            gap: 40px;
+            margin: 40px 20px;
         }
 
         .video-item video {
             width: 100%;
             max-width: 600px;
+            height: auto;
             border-radius: 5px;
         }
 
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .brandingCenter {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navigation ul {
+                justify-content: center;
+                margin: 15px 0;
+            }
+
+            .gallery {
+                gap: 20px;
+            }
+
+            .gallery-section {
+                margin-bottom: 40px;
+            }
+
+            .text-section {
+                margin: 30px 15px;
+            }
+
+            .site-title {
+                font-size: 1.5rem;
+            }
+
+            .navigation a {
+                font-size: 16px;
+            }
+
+            .lightbox-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .gallery {
+                gap: 15px;
+            }
+
+            .video-container {
+                gap: 30px;
+                margin: 30px 15px;
+            }
+
+            .video-item video {
+                max-width: 100%;
+            }
+
+            .image-description {
+                font-size: 0.9rem;
+            }
+
+            .navigation a {
+                font-size: 14px;
+            }
+
+            .social-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .close-lightbox {
+                font-size: 24px;
+            }
+
+            .lightbox-description {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <a href="#main-content" class="skip-link">Skip to content</a>
         <div class="brandingCenter">
-            <a href="/" class="site-title">S</a>
+            <a href="home.html" class="site-title">S</a>
             <nav class="navigation">
                 <ul>
                     <li><a href="home.html">Home</a></li>
@@ -234,81 +299,68 @@
         </div>
     </header>
 
-    <!-- Text Section -->
     <section class="text-section">
-        <h1>Comissions</h1>
+        <h1>Commissions</h1>
     </section>
 
-<!-- Video Section -->
-<div class="video-container">
-    <!-- Video 1 -->
-    <div class="video-item">
-        <video autoplay muted loop>
-            <source src="images/comissions/MC - Dishaun.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div class="video-container">
+        <div class="video-item">
+            <video autoplay muted loop>
+                <source src="images/comissions/MC - Dishaun.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
             <p class="image-description">Brand Logo<br />Mavire Codoir - @mavirecodoir<br />www.mavirecodoir.com</p>
-    </div>
+        </div>
 
-    <!-- Video 2 -->
-    <div class="video-item">
-        <video autoplay muted loop>
-            <source src="images/comissions/Acquainted in the City - Naomi.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <p class="image-description">Brand Logo<br />Acquainted in the City - @Aqnd.City</p>
+        <div class="video-item">
+            <video autoplay muted loop>
+                <source src="images/comissions/Acquainted in the City - Naomi.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="image-description">Brand Logo<br />Acquainted in the City - @Aqnd.City</p>
+        </div>
     </div>
-</div>
 
     <main id="main-content">
-        <!-- Gallery Section 1 -->
         <section class="gallery-section gallery-section-1">
             <div class="gallery">
                 <div>
-                    <img src="images/comissions/Cover Comission/1.png" alt="Landscape 1" width="600" height="600" onclick="openLightbox(this, 'Album<br>RENAISSANCE 22E - Leo Avant')">
+                    <img src="images/comissions/Cover Comission/1.png" alt="Landscape 1" onclick="openLightbox(this, 'Album<br>RENAISSANCE 22E - Leo Avant')">
                     <p class="image-description">Album<br />RENAISSANCE 22E - Leo Avant</p>
                 </div>
             </div>
         </section>
-    </main>
 
-    <main id="main-content">
-        <!-- Gallery Section 2 -->
         <section class="gallery-section gallery-section-2">
             <div class="gallery">
                 <div>
-                    <img src="images/comissions/comission/1.png" alt="Landscape 1" width="600" height="770" onclick="openLightbox(this, 'Photoshoot<br />Myths and Othwerworlds - @kasia.dabrowka')">
+                    <img src="images/comissions/comission/1.png" alt="Landscape 1" onclick="openLightbox(this, 'Photoshoot<br />Myths and Othwerworlds - @kasia.dabrowka')">
                     <p class="image-description">Photoshoot<br />Myths and Othwerworlds - @kasia.dabrowka</p>
                 </div>
             </div>
         </section>
 
-        <main id="main-content">
-            <!-- Gallery Section 3 -->
-            <section class="gallery-section gallery-section-3">
-                <div class="gallery">
-                    <div>
-                        <img src="images/comissions/2.png" alt="Landscape 1" width="600" height="720" onclick="openLightbox(this, 'Event Flyer<br />Album Release Party - Amda Knox')">
-                        <p class="image-description">Event Flyer<br />Album Release Party - Amda Knox</p>
-                    </div>
+        <section class="gallery-section gallery-section-3">
+            <div class="gallery">
+                <div>
+                    <img src="images/comissions/2.png" alt="Landscape 1" onclick="openLightbox(this, 'Event Flyer<br />Album Release Party - Amda Knox')">
+                    <p class="image-description">Event Flyer<br />Album Release Party - Amda Knox</p>
                 </div>
-            </section>    
+            </div>
+        </section>
 
-    <main id="main-content">
-        <!-- Gallery Section 4 -->
         <section class="gallery-section gallery-section-4">
             <div class="gallery">
                 <div>
-                    <img src="images/comissions/1.png" alt="Landscape 1" width="600" height="600" onclick="openLightbox(this, 'Book<br />HEAL BEFORE YOU HURT ME AGAIN<br />By ANI<br />@anitherapy_78 - @_mizzani')">
+                    <img src="images/comissions/1.png" alt="Landscape 1" onclick="openLightbox(this, 'Book<br />HEAL BEFORE YOU HURT ME AGAIN<br />By ANI<br />@anitherapy_78 - @_mizzani')">
                     <p class="image-description">Book<br />HEAL BEFORE YOU HURT ME AGAIN - ANI<br />@anitherapy_78 - @_mizzani</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Lightbox HTML -->
     <div class="lightbox" id="lightbox">
-        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <span class="close-lightbox" onclick="closeLightbox()">×</span>
         <div class="lightbox-content">
             <img src="" alt="Enlarged Image" id="lightbox-img">
             <div class="lightbox-description" id="lightbox-description"></div>
@@ -321,8 +373,8 @@
             const lightboxImg = document.getElementById("lightbox-img");
             const lightboxDescription = document.getElementById("lightbox-description");
 
-            lightboxImg.src = img.src;  // Set lightbox image source to clicked image source
-            lightboxDescription.innerHTML = description;  // Set the description
+            lightboxImg.src = img.src;
+            lightboxDescription.innerHTML = description;
             lightbox.classList.add("active");
         }
 
@@ -331,7 +383,6 @@
             lightbox.classList.remove("active");
         }
 
-        // Close lightbox when clicking outside the image
         document.getElementById("lightbox").addEventListener("click", function(event) {
             if (event.target === this) {
                 closeLightbox();
