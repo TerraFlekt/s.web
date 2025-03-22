@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terraflekt</title>
     <style>
-        /* General Styles */
         body {
             margin: 0;
             font-family: 'Helvetica', sans-serif;
+            background-color: #040404;
+            overflow-x: hidden; /* Prevent horizontal overflow */
         }
 
-        /* Skip Link */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -21,32 +22,34 @@
             text-decoration: none;
             border: 1px solid #000;
             transition: top 0.3s;
+            z-index: 1000;
         }
         .skip-link:focus {
             top: 0;
         }
 
-        /* Header Styling */
         header {
-            background-color: #ffffff;
+            background-color: #040404;
             padding: 20px;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Branding Center Layout */
         .brandingCenter {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
-            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px; /* Add padding for smaller screens */
         }
 
         .site-title {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
             text-decoration: none;
             color: #a7a7a7;
+            margin: 0;
         }
 
         .navigation ul {
@@ -54,7 +57,8 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
             opacity: 1;
             transition: opacity 1s ease;
         }
@@ -63,7 +67,7 @@
             text-decoration: none;
             color: #a7a7a7;
             transition: color 0.3s ease;
-            font-size: 18px;
+            font-size: clamp(14px, 2.5vw, 18px); /* Responsive font size */
         }
 
         .navigation a:hover {
@@ -72,21 +76,18 @@
 
         .navigation a.active {
             text-decoration: underline;
-            color: #a7a7a7;
             text-underline-offset: 6px;
             text-decoration-thickness: 2px;
         }
 
-        /* Social Media Icons */
         .social-media {
             display: flex;
             gap: 10px;
         }
 
         .social-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: clamp(18px, 3vw, 20px); /* Responsive size */
+            height: clamp(18px, 3vw, 20px);
             border-radius: 28%;
             border: 2px solid #00000000;
             transition: transform 0.3s ease;
@@ -97,56 +98,223 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
         .social-icon:hover {
             transform: scale(1.2);
         }
 
-        /* Text Section */
         .text-section {
-            margin: 130px;
+            margin: clamp(30px, 5vw, 60px) 20px; /* Responsive margin */
             text-align: center;
             color: #a7a7a7;
-            text-decoration-thickness: 2px;
-            font-size: 20px;
+            font-size: clamp(14px, 2.5vw, 20px); /* Responsive font size */
         }
 
-        /* Gallery Styles */
+        .video-container {
+            margin: 0 auto clamp(20px, 3vw, 40px);
+            padding: 0 15px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
         .gallery {
             display: flex;
-            gap: 50px;
+            gap: clamp(15px, 2vw, 30px); /* Responsive gap */
             justify-content: center;
             flex-wrap: wrap;
+            padding: 0 15px;
+        }
+
+        .gallery-section {
+            margin-bottom: clamp(40px, 5vw, 60px); /* Responsive margin */
+            width: 100%;
         }
 
         .gallery img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
             object-fit: cover;
             border-radius: 0px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
-        /* Gallery Section Spacing */
-        .gallery-section {
-            margin-bottom: 100px; /* Adds space beneath each gallery section */
+        .gallery-horizontal .gallery {
+            flex-wrap: nowrap;
+            justify-content: center;
+            width: 100%;
+            margin: 0 auto;
         }
 
-        /* Image description styling */
+        .gallery-horizontal .gallery div {
+            flex: 0 0 auto;
+        }
+
+        .gallery-horizontal .gallery img {
+            width: auto;
+            height: clamp(200px, 25vw, 300px); /* Responsive height */
+            max-width: none;
+            object-fit: cover;
+        }
+
         .image-description {
             text-align: left;
             margin-top: 10px;
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem); /* Responsive font size */
             color: #a7a7a7;
+        }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .mute-button {
+            background-color: #a7a7a7;
+            color: #040404;
+            border: none;
+            padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px); /* Responsive padding */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: clamp(12px, 2vw, 16px); /* Responsive font size */
+        }
+
+        .mute-button:hover {
+            background-color: #888;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: clamp(20px, 4vw, 30px); /* Responsive font size */
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 1024px) {
+            .gallery-horizontal .gallery {
+                flex-wrap: wrap; /* Allow wrapping on medium screens */
+            }
+
+            .gallery-horizontal .gallery img {
+                height: clamp(150px, 20vw, 250px); /* Adjust height */
+                max-width: 400px; /* Add max-width for better control */
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .brandingCenter {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+            .navigation ul {
+                justify-content: center;
+                margin: 15px 0;
+                gap: 15px;
+            }
+
+            .text-section {
+                margin: clamp(20px, 4vw, 40px) 15px;
+            }
+
+            .video-container {
+                padding: 0 10px;
+            }
+
+            .gallery {
+                gap: 20px;
+            }
+
+            .gallery img {
+                max-width: 400px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .text-section {
+                margin: clamp(15px, 3vw, 30px) 10px;
+            }
+
+            .video-container {
+                padding: 0 5px;
+            }
+
+            .gallery {
+                gap: 15px;
+            }
+
+            .gallery img {
+                max-width: 100%;
+            }
+
+            .gallery-horizontal .gallery img {
+                height: clamp(120px, 15vw, 200px);
+                max-width: 300px;
+            }
+
+            .audio-controls {
+                bottom: 10px;
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <audio id="backgroundAudio" loop preload="auto" autoplay>
+        <source src="media/music projects/Terraflekt.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="audio-controls">
+        <button id="muteButton" class="mute-button">Mute</button>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">×</span>
+        <img id="lightboxImage" src="" alt="Enlarged image">
+    </div>
+
     <header>
         <a href="#main-content" class="skip-link">Skip to content</a>
         <div class="brandingCenter">
-            <a href="/" class="site-title">S</a>
+            <a href="home.html" class="site-title">S</a>
             <nav class="navigation">
                 <ul>
                     <li><a href="home.html">Home</a></li>
@@ -163,56 +331,58 @@
         </div>
     </header>
 
-    <!-- Text Section -->
     <section class="text-section">
         <h1>TERRAFLEKT</h1>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="media/music projects/Terraflekt.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
         <p>“TERRAFLEKT represents an artistic exploration that captures the essence<br /> 
             of each individual. By utilizing natural materials sourced from nature itself, these<br /> 
             creations symbolize an unveiling of one's inner characteristics."</p>
     </section>
 
     <main id="main-content">
-        <!-- Gallery Section 1 -->
         <section class="gallery-section gallery-section-1">
             <div class="gallery">
                 <div>
-                    <img src="images/headpieces/01.jpg" alt="Landscape 1" width="600" height="650">
+                    <img src="images/headpieces/01.jpg" alt="Landscape 1">
                     <p class="image-description">       </p>
                 </div>
                 <div>
-                    <img src="images/headpieces/02.jpg" alt="Landscape 2" width="600" height="650">
+                    <img src="images/headpieces/02.jpg" alt="Landscape 2">
                     <p class="image-description">       </p>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section 2 -->
-        <section class="gallery-section gallery-section-2">
+        <section class="gallery-section gallery-section-2 gallery-horizontal">
             <div class="gallery">
                 <div>
-                    <img src="images/headpieces/06.jpg" alt="City 1" width="300" height="400">
+                    <img src="images/headpieces/06.jpg" alt="City 1">
                     <p class="image-description">Sold - @everyrose0</p>
                 </div>
                 <div>
-                    <img src="images/headpieces/07.jpg" alt="City 2" width="300" height="400">
+                    <img src="images/headpieces/07.jpg" alt="City 2">
                     <p class="image-description">       </p>
                 </div>
                 <div>
-                    <img src="images/headpieces/08.jpg" alt="City 3" width="300" height="400">
+                    <img src="images/headpieces/08.jpg" alt="City 3">
                     <p class="image-description">       </p>
                 </div>
                 <div>
-                    <img src="images/headpieces/05.jpg" alt="City 4" width="300" height="400">
+                    <img src="images/headpieces/05.jpg" alt="City 4">
                     <p class="image-description">Sold - @_____nymph.mp3</p>
                 </div>
                 <div>
-                    <img src="images/headpieces/03.jpg" alt="City 5" width="300" height="400">
+                    <img src="images/headpieces/03.jpg" alt="City 5">
                     <p class="image-description">       </p>
                 </div>
             </div>
         </section>
 
-        <!-- Text Section -->
         <section class="text-section">
             <h1>Cimarrón</h1>
             <p>The Unveiling of Inner Shadows. Where Terraflekt represents an artistic<br /> 
@@ -220,40 +390,119 @@
                 the inner shadows.</p>
         </section>
 
-        <!-- Gallery Section 3 -->
-        <section class="gallery-section gallery-section-3-4">
+        <section class="gallery-section gallery-section-3-4 gallery-horizontal">
             <div class="gallery">
                 <div>
-                    <img src="images/headpieces/c01.jpg" alt="Music Project 1" width="380" height="500">
+                    <img src="images/headpieces/c01.jpg" alt="Music Project 1">
                     <p class="image-description">"Entropy"</p>
                 </div>
                 <div>
-                    <img src="images/headpieces/c02.jpg" alt="Music Project 2" width="380" height="500">
+                    <img src="images/headpieces/c02.jpg" alt="Music Project 2">
                     <p class="image-description">"Maroon"</p>
                 </div>
                 <div>
-                    <img src="images/headpieces/c03.jpg" alt="Music Project 3" width="380" height="500">
+                    <img src="images/headpieces/c03.jpg" alt="Music Project 3">
                     <p class="image-description">"Devour"</p>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section 4 -->
-        <section class="gallery-section gallery-section-3-4">
+        <section class="gallery-section gallery-section-3-4 gallery-horizontal">
             <div class="gallery">
                 <div>
-                    <img src="images/headpieces/c04.PNG" alt="Artwork 1" width="380" height="500">
+                    <img src="images/headpieces/c04.PNG" alt="Artwork 1">
                     <p class="image-description">       </p>
                 </div>
                 <div>
-                    <img src="images/headpieces/c05.jpg" alt="Artwork 2" width="380" height="500">
+                    <img src="images/headpieces/c05.jpg" alt="Artwork 2">
                     <p class="image-description">       </p>
                 </div>
                 <div>
-                    <img src="images/headpieces/c06.jpg" alt="Artwork 3" width="380" height="500">
+                    <img src="images/headpieces/c06.jpg" alt="Artwork 3">
                     <p class="image-description">       </p>
                 </div>
             </div>
         </section>
     </main>
+
+    <script>
+        const audio = document.getElementById('backgroundAudio');
+        audio.volume = 0.5;
+        audio.loop = true;
+        
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log("Audio autoplay was prevented:", error);
+                document.addEventListener('click', function startAudio() {
+                    audio.play().catch(e => console.log("Fallback play failed:", e));
+                    document.removeEventListener('click', startAudio);
+                }, { once: true });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            video.loop = true;
+            video.play().catch(error => {
+                console.log("Video autoplay was prevented:", error);
+            });
+
+            video.addEventListener('ended', function() {
+                video.currentTime = 0;
+                video.play();
+            });
+
+            const muteButton = document.getElementById('muteButton');
+            let isMuted = false;
+
+            audio.addEventListener('ended', function() {
+                audio.currentTime = 0;
+                if (!isMuted) {
+                    audio.play();
+                }
+            });
+
+            muteButton.addEventListener('click', function() {
+                if (isMuted) {
+                    audio.play();
+                    muteButton.textContent = 'Mute';
+                    isMuted = false;
+                } else {
+                    audio.pause();
+                    muteButton.textContent = 'Unmute';
+                    isMuted = true;
+                }
+            });
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const galleryImages = document.querySelectorAll('.gallery img');
+
+            galleryImages.forEach(image => {
+                image.addEventListener('click', function() {
+                    lightboxImage.src = this.src;
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
+</html>
