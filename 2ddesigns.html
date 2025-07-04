@@ -318,13 +318,13 @@
     <div class="centered-video-container">
         <div class="video-section">
             <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/1098877998?badge=0&autoplay=1&loop=1&muted=1"
+                <iframe id="vimeo1" src="https://player.vimeo.com/video/1098877998?badge=0&autoplay=1&loop=1&muted=1"
                     frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
         </div>
         <div class="video-section">
             <div class="video-container">
-                <iframe src="https://player.vimeo.com/video/566818548?badge=0&autoplay=1&loop=1&muted=1"
+                <iframe id="vimeo2" src="https://player.vimeo.com/video/566818548?badge=0&autoplay=1&loop=1&muted=1"
                     frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
             </div>
         </div>
@@ -346,6 +346,16 @@
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
         }
+
+        // Ensure both Vimeo videos attempt to autoplay on page load
+        window.onload = function() {
+            const vimeo1 = document.getElementById('vimeo1');
+            const vimeo2 = document.getElementById('vimeo2');
+            if (vimeo1 && vimeo2) {
+                vimeo1.contentWindow.postMessage('{"method":"play"}', 'https://player.vimeo.com');
+                vimeo2.contentWindow.postMessage('{"method":"play"}', 'https://player.vimeo.com');
+            }
+        };
     </script>
 </body>
 </html>
