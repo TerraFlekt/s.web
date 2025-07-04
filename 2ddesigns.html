@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/x-icon" href= "browser icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="browser icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Header</title>
     <style>
@@ -87,35 +87,37 @@
             padding: 0 20px;
         }
 
-        /* Slidable Portfolio Grid */
+        /* Portfolio Masonry Layout */
         .portfolio-container {
-            overflow: hidden;
             background-color: #f9f9f9;
-            padding: 20px 0;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .slider-wrapper {
-            display: flex;
-            min-width: 200%;
-            animation: scroll 30s linear infinite;
+        .portfolio-masonry {
+            column-count: 3;
+            column-gap: 30px;
         }
 
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .slider-wrapper img {
-            height: 400px;
-            width: auto;
-            border-radius: 5px;
-            margin: 0 15px;
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .slider-wrapper img:hover {
+        .portfolio-item img:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         /* Lightbox Styling */
@@ -164,11 +166,21 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
+            aspect-ratio: 16 / 9;
         }
 
         .video-container video {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
         }
 
         /* Media Queries */
@@ -183,8 +195,13 @@
                 margin: 15px 0;
             }
 
-            .slider-wrapper img {
-                height: 250px;
+            .portfolio-masonry {
+                column-count: 2;
+                column-gap: 20px;
+            }
+
+            .portfolio-item {
+                margin-bottom: 20px;
             }
 
             .text-section {
@@ -201,9 +218,13 @@
         }
 
         @media screen and (max-width: 480px) {
-            .slider-wrapper img {
-                height: 150px;
-                margin: 0 10px;
+            .portfolio-masonry {
+                column-count: 1;
+                column-gap: 15px;
+            }
+
+            .portfolio-item {
+                margin-bottom: 15px;
             }
 
             .text-section h1 {
@@ -250,33 +271,42 @@
     </section>    
 
     <div class="portfolio-container">
-        <div class="slider-wrapper">
-            <img src="images/2D/1.jpg" alt="Project 1" onclick="openLightbox(this.src)">
-            <img src="images/2D/2.jpg" alt="Project 2" onclick="openLightbox(this.src)">
-            <img src="images/2D/3.jpg" alt="Project 3" onclick="openLightbox(this.src)">
-            <img src="images/2D/4.jpg" alt="Project 4" onclick="openLightbox(this.src)">
-            <img src="images/2D/5.png" alt="Project 5" onclick="openLightbox(this.src)">
-            <img src="images/2D/6.png" alt="Project 6" onclick="openLightbox(this.src)">
-            <img src="images/2D/7.jpg" alt="Project 7" onclick="openLightbox(this.src)">
-            <img src="images/2D/8.jpg" alt="Project 8" onclick="openLightbox(this.src)">
-            <img src="images/2D/9.jpg" alt="Project 9" onclick="openLightbox(this.src)">
-            <img src="images/2D/1.jpg" alt="Project 1" onclick="openLightbox(this.src)">
-            <img src="images/2D/2.jpg" alt="Project 2" onclick="openLightbox(this.src)">
-            <img src="images/2D/3.jpg" alt="Project 3" onclick="openLightbox(this.src)">
-            <img src="images/2D/4.jpg" alt="Project 4" onclick="openLightbox(this.src)">
-            <img src="images/2D/5.png" alt="Project 5" onclick="openLightbox(this.src)">
-            <img src="images/2D/6.png" alt="Project 6" onclick="openLightbox(this.src)">
-            <img src="images/2D/7.jpg" alt="Project 7" onclick="openLightbox(this.src)">
-            <img src="images/2D/8.jpg" alt="Project 8" onclick="openLightbox(this.src)">
-            <img src="images/2D/9.jpg" alt="Project 9" onclick="openLightbox(this.src)">
+        <div class="portfolio-masonry">
+            <div class="portfolio-item">
+                <img src="images/2D/1.jpg" alt="Project 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/2.jpg" alt="Project 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/3.jpg" alt="Project 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/4.jpg" alt="Project 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/5.png" alt="Project 5" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/6.png" alt="Project 6" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/7.jpg" alt="Project 7" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/8.jpg" alt="Project 8" onclick="openLightbox(this.src)">
+            </div>
+            <div class="portfolio-item">
+                <img src="images/2D/9.jpg" alt="Project 9" onclick="openLightbox(this.src)">
+            </div>
         </div>
     </div>
 
     <div class="centered-video-container">
         <div class="video-section">
             <div class="video-container">
-                    <iframe src="https://player.vimeo.com/video/1098877998?badge=0"
-                        frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+                <iframe src="https://player.vimeo.com/video/1098877998?badge=0"
+                    frameborder="0" allow="fullscreen" allowfullscreen></iframe>
             </div>
         </div>
 
